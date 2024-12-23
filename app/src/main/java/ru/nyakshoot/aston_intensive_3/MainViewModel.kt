@@ -59,10 +59,15 @@ class MainViewModel : ViewModel() {
     }
 
     fun moveContact(fromPosition: Int, toPosition: Int) {
-        val updatedContacts = _currentContacts.value ?: return
-        updatedContacts.removeAt(fromPosition).also { item ->
-            updatedContacts.add(toPosition, item)
-        }
+        val updatedContacts = _currentContacts.value?.toMutableList() ?: return
+        val movedItem = updatedContacts[fromPosition]
+
+        updatedContacts.removeAt(fromPosition)
+
+        val targetPosition = if (toPosition < fromPosition) toPosition + 1 else toPosition - 1
+
+        updatedContacts.add(targetPosition, movedItem)
+
         _currentContacts.value = updatedContacts
     }
 }

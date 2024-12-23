@@ -98,8 +98,6 @@ class ContactAdapter(
         } else {
             super.onBindViewHolder(holder, position, payloads)
         }
-
-
     }
 
     @SuppressLint("NotifyDataSetChanged")

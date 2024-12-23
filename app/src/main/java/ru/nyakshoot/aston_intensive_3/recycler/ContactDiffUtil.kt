@@ -1,7 +1,6 @@
 package ru.nyakshoot.aston_intensive_3.recycler
 
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.DiffUtil
 
 const val CONTACT_PAYLOAD_NAME_KEY = "NAME"
@@ -19,7 +18,6 @@ object ContactDiffUtil : DiffUtil.ItemCallback<ContactModel>() {
     }
 
     override fun getChangePayload(oldItem: ContactModel, newItem: ContactModel): Any? {
-        Log.i("testapp", "ChangePayload")
         val bundle = Bundle()
         if (oldItem.name != newItem.name) {
             bundle.putString(CONTACT_PAYLOAD_NAME_KEY, newItem.name)
